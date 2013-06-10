@@ -1,0 +1,23 @@
+package com.infinity.marshmallow.api.exception;
+
+public class MarshmallowNetworkException extends MarshmallowException {
+
+	/** Generated serial id */
+	private static final long serialVersionUID = 4289472870307682905L;
+
+	/**
+	 * @param msg
+	 * @param throwable
+	 */
+	public MarshmallowNetworkException(String msg, Throwable throwable) {
+		super(msg, throwable);
+	}
+
+	/**
+	 * @param msg
+	 */
+	public MarshmallowNetworkException(String msg) {
+		super(msg);
+	}
+
+}

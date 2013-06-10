@@ -1,0 +1,23 @@
+package com.infinity.marshmallow.server;
+
+import com.infinity.marshmallow.api.Server;
+import com.infinity.marshmallow.api.ServerListener;
+
+public class DefaultMarshmallowServer implements Server {
+
+	@Override
+	public void configureServer() {
+		System.out.println("config");
+	}
+
+	@Override
+	public void addListener(ServerListener listener) {
+		System.out.println("add");
+	}
+
+	@Override
+	public void startServer() {
+		System.out.println("start");
+	}
+
+}

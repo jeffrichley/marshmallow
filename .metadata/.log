@@ -1,0 +1,107 @@
+!SESSION 2013-06-07 10:20:12.102 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.6.0_45
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -keyring /Users/jeffreyrichley/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -data /Users/jeffreyrichley/Documents/workspace/marshmallow -product org.eclipse.epp.package.jee.product -keyring /Users/jeffreyrichley/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2013-06-07 10:20:18.981
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2013-06-07 10:28:47.978
+!MESSAGE No valid Android XML Editor Delegate found for file /marshmallow-loader/pom.xml [Res null, type null]
+
+!ENTRY com.google.gdt.eclipse.suite 1 0 2013-06-07 10:28:51.918
+!MESSAGE Registering: com.google.appengine.eclipse.sdkbundle_1.8.0
+
+!ENTRY com.google.gdt.eclipse.suite 1 0 2013-06-07 10:28:52.032
+!MESSAGE Registering: com.google.gwt.eclipse.sdkbundle_2.5.1
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2013-06-07 10:29:29.022
+!MESSAGE No valid Android XML Editor Delegate found for file /marshmallow-loader/pom.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2013-06-07 10:31:10.912
+!MESSAGE No valid Android XML Editor Delegate found for file /marshmallow-api/pom.xml [Res null, type null]
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2013-06-07 10:36:00.771
+!MESSAGE The POM for com.infinity.marshmallow:marshmallow-api:jar:1.0-SNAPSHOT is missing, no dependency information available
+!SESSION 2013-06-07 22:27:57.295 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.6.0_45
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -keyring /Users/jeffreyrichley/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/jeffreyrichley/Documents/workspace/marshmallow -product org.eclipse.epp.package.jee.product -keyring /Users/jeffreyrichley/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.resources 2 10035 2013-06-07 22:27:59.384
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.net 1 0 2013-06-07 22:28:05.289
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2013-06-07 22:30:23.559
+!MESSAGE The POM for com.infinity.marshmallow:marshmallow-api:jar:1.0-SNAPSHOT is missing, no dependency information available
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2013-06-07 22:36:51.605
+!MESSAGE No valid Android XML Editor Delegate found for file /marshmallow-server/pom.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-07 22:37:09.434
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-server/pom.xml]
+
+!ENTRY org.eclipse.jst.jsp.core 4 4 2013-06-07 22:46:03.364
+!MESSAGE A workspace crash was detected. The previous session did not exit normally. Not using saved taglib indexes.
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-07 22:46:22.079
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-server/pom.xml]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-07 22:46:23.980
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-server/pom.xml]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-07 22:46:27.476
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-server/pom.xml]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-07 22:47:42.910
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-server/pom.xml]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-07 22:57:18.602
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-server/pom.xml]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-07 22:57:34.337
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-server/pom.xml]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-07 23:07:55.317
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-server/pom.xml]
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2013-06-08 09:25:04.163
+!MESSAGE No valid Android XML Editor Delegate found for file /marshmallow-runner/pom.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-08 09:25:45.808
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-runner/pom.xml]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-06-08 09:27:13.058
+!MESSAGE No projects found for [/Users/jeffreyrichley/Documents/workspace/marshmallow/marshmallow-runner/pom.xml]
+
+!ENTRY org.eclipse.ui 4 4 2013-06-08 09:43:12.102
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.ProblemView.
+
+!ENTRY com.android.ide.eclipse.ddms 4 0 2013-06-08 09:43:12.695
+!MESSAGE DDMS files not found: /Applications/Java/eclipse/Eclipse.app/Contents/MacOS/platform-tools/adb /Applications/Java/eclipse/Eclipse.app/Contents/MacOS/tools/hprof-conv /Applications/Java/eclipse/Eclipse.app/Contents/MacOS/tools/traceview 
+
+!ENTRY org.eclipse.ui.ide 4 4 2013-06-10 07:10:37.545
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 2 1 2013-06-10 07:10:37.547
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2013-06-10 07:10:37.547
+!MESSAGE The project description file (.project) for 'RemoteSystemsTempFiles' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SESSION 2013-06-10 07:10:40.748 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.6.0_45
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -keyring /Users/jeffreyrichley/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/jeffreyrichley/Documents/workspace/marshmallow -product org.eclipse.epp.package.jee.product -keyring /Users/jeffreyrichley/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2013-06-10 07:10:54.084
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences

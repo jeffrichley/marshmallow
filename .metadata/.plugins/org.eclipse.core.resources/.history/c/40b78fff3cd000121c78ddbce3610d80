@@ -1,0 +1,5 @@
+package com.infinity.marshmallow.server;
+
+public class DefaultMarshmallowServer {
+
+}

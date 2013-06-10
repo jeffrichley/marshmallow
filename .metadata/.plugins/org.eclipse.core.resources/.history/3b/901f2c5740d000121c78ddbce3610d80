@@ -1,0 +1,30 @@
+package com.infinity.marshmallow.api.exception;
+
+/**
+ * Base exception in the Marshmallow Server system
+ * 
+ * @author jeffreyrichley
+ */
+public class MarshmallowException extends RuntimeException {
+
+	/** Generated serial id */
+	private static final long serialVersionUID = -726334094065658180L;
+
+	/**
+	 * Base exception of the Marshmallow Server
+	 * @param msg The exception description
+	 * @param throwable The wrapped throwable
+	 */
+	public MarshmallowException(String msg, Throwable throwable) {
+		super(msg, throwable);
+	}
+
+	public MarshmallowException(String arg0) {
+		super(arg0);
+	}
+
+	public MarshmallowException(Throwable arg0) {
+		super(arg0);
+	}
+
+}

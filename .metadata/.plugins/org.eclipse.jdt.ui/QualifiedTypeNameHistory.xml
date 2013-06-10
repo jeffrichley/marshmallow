@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.infinity.marshmallow.api.Server"/>
+<fullyQualifiedTypeName name="com.infinity.marshmallow.server.DefaultMarshmallowServer"/>
+<fullyQualifiedTypeName name="com.infinity.marshmallow.api.ServerListener"/>
+<fullyQualifiedTypeName name="java.net.InetSocketAddress"/>
+<fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+<fullyQualifiedTypeName name="com.infinity.marshmallow.api.exception.MarshmallowNetworkException"/>
+</qualifiedTypeNameHistroy>

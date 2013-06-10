@@ -1,0 +1,8 @@
+package com.infinity.marshmallow.api.exception;
+
+public class MarshmallowException extends RuntimeException {
+
+	/** Generated serial id */
+	private static final long serialVersionUID = -726334094065658180L;
+
+}
