@@ -1,9 +1,0 @@
-package com.infinity.marshmallow.api;
-
-public interface Server {
-	
-	void configureServer();
-	void addListener(ServerListener listener);
-	void startServer();
-	
-}

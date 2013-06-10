@@ -1,5 +1,0 @@
-package com.infinity.marshmallow.api.exception;
-
-public class MarshmallowNetworkException extends MarshmallowException {
-
-}
