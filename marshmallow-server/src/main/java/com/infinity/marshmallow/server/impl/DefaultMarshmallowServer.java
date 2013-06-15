@@ -1,4 +1,4 @@
-package com.infinity.marshmallow.server;
+package com.infinity.marshmallow.server.impl;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
+import org.apache.mina.filter.codec.ProtocolCodecFactory;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.logging.LoggingFilter;
@@ -13,9 +14,11 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.infinity.marshmallow.api.Server;
-import com.infinity.marshmallow.api.ServerListener;
+import com.google.inject.Inject;
 import com.infinity.marshmallow.api.exception.MarshmallowNetworkException;
+import com.infinity.marshmallow.api.server.MessageCodec;
+import com.infinity.marshmallow.api.server.Server;
+import com.infinity.marshmallow.server.CodecAdapter;
 
 public class DefaultMarshmallowServer implements Server {
 
@@ -23,17 +26,22 @@ public class DefaultMarshmallowServer implements Server {
 	private static final Logger logger = LoggerFactory.getLogger(DefaultMarshmallowServer.class);
 
 	private IoAcceptor acceptor = null;
+	private ProtocolCodecFactory codecFactory;
 
+	@Inject
+	public DefaultMarshmallowServer(ProtocolCodecFactory codecFactory) {
+		this.codecFactory = codecFactory;
+	}
+	
 	@Override
 	public void configureServer() {
 		logger.debug("Configuring the Default Server");
 		
 		acceptor = new NioSocketAcceptor();
 		acceptor.getFilterChain().addLast("logger", new LoggingFilter());
-		acceptor.getFilterChain().addLast(
-				"codec",
-				new ProtocolCodecFilter(new TextLineCodecFactory(Charset
-						.forName("UTF-8"))));
+//		acceptor.getFilterChain().addLast("codec",
+//				new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"))));
+		acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(codecFactory));
 		acceptor.getSessionConfig().setReadBufferSize(2048);
 		acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
 		
@@ -41,8 +49,8 @@ public class DefaultMarshmallowServer implements Server {
 	}
 
 	@Override
-	public void addListener(ServerListener listener) {
-		acceptor.setHandler(new MarshmallowServerHandler());
+	public void addListener(MessageCodec codec) {
+		acceptor.setHandler(new CodecAdapter(codec));
 	}
 
 	@Override

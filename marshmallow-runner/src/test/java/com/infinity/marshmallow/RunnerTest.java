@@ -7,9 +7,10 @@ import static org.mockito.Mockito.mock;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
+import org.mockito.Mock;
 
-import com.infinity.marshmallow.api.Server;
-import com.infinity.marshmallow.api.ServerListener;
+import com.infinity.marshmallow.api.server.MessageCodec;
+import com.infinity.marshmallow.api.server.Server;
 import com.infinity.marshmallow.runner.Runner;
 
 /**
@@ -18,7 +19,7 @@ import com.infinity.marshmallow.runner.Runner;
 public class RunnerTest {
 
 	private Runner runner;
-	private Server server;
+	@Mock private Server server;
 
 	@Before
 	public void setup() {
@@ -32,7 +33,7 @@ public class RunnerTest {
 		
 		InOrder inorder = inOrder(server);
 		inorder.verify(server).configureServer();
-		inorder.verify(server).addListener(any(ServerListener.class));
+		inorder.verify(server).addListener(any(MessageCodec.class));
 		inorder.verify(server).startServer();
 	}
 	

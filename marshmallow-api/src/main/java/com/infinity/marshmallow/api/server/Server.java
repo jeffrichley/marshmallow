@@ -1,4 +1,4 @@
-package com.infinity.marshmallow.api;
+package com.infinity.marshmallow.api.server;
 
 /**
  * <p>
@@ -24,9 +24,9 @@ public interface Server {
 	
 	/**
 	 * Add a listener to the server to give information to rest of the system to process
-	 * @param listener - A listener that will be given information as it is received from the client
+	 * @param codec - A listener that will be given information as it is received from the client
 	 */
-	void addListener(ServerListener listener);
+	void addListener(MessageCodec codec);
 	
 	/**
 	 * Fire up the server and begin listening 

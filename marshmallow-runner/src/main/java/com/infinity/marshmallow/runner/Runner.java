@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import com.infinity.marshmallow.api.Server;
-import com.infinity.marshmallow.api.ServerListener;
+import com.infinity.marshmallow.api.server.MessageCodec;
+import com.infinity.marshmallow.api.server.Server;
 import com.infinity.marshmallow.server.ServerInjectionModule;
 
 /**
@@ -27,7 +27,7 @@ public class Runner {
 	
 	public void run() {
 		server.configureServer();
-		server.addListener(new ServerListener(){});
+		server.addListener(new MessageCodec(){});
 		server.startServer();
 	}
 	

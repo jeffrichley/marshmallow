@@ -1,10 +1,10 @@
-package com.infinity.marshmallow.server;
+package com.infinity.marshmallow.client;
 
 import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 
-public class MarshmallowServerHandler implements IoHandler {
+public class ClientSessionHandler implements IoHandler {
 
 	@Override
 	public void sessionCreated(IoSession session) throws Exception {
@@ -39,8 +39,10 @@ public class MarshmallowServerHandler implements IoHandler {
 	}
 
 	@Override
-	public void messageReceived(IoSession session, Object message) throws Exception {
-		System.out.println(message);
+	public void messageReceived(IoSession session, Object message)
+			throws Exception {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
