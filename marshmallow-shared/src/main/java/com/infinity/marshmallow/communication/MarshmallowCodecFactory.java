@@ -1,31 +1,17 @@
 package com.infinity.marshmallow.communication;
 
-import org.apache.mina.core.session.IoSession;
-import org.apache.mina.filter.codec.ProtocolCodecFactory;
-import org.apache.mina.filter.codec.ProtocolDecoder;
-import org.apache.mina.filter.codec.ProtocolEncoder;
+import org.apache.mina.filter.codec.demux.DemuxingProtocolCodecFactory;
 
 import com.google.inject.Inject;
 
-public class MarshmallowCodecFactory implements ProtocolCodecFactory {
-
-	private ProtocolEncoder encoder;
-	private ProtocolDecoder decoder;
+public class MarshmallowCodecFactory extends DemuxingProtocolCodecFactory {
 
 	@Inject
-	public MarshmallowCodecFactory(ProtocolEncoder encoder, ProtocolDecoder decoder) {
-		this.encoder = encoder;
-		this.decoder = decoder;
+	public MarshmallowCodecFactory() {
+		addMessageDecoder(new MarshmallowMessageDecoder());
+		
+		addMessageEncoder(MyMessage.class, MyMessageEncoder.class);
 	}
 	
-	@Override
-	public ProtocolEncoder getEncoder(IoSession session) throws Exception {
-		return null;
-	}
-
-	@Override
-	public ProtocolDecoder getDecoder(IoSession session) throws Exception {
-		return null;
-	}
 
 }
