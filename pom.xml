@@ -45,12 +45,11 @@
 	</dependencies>
 	<modules>
 		<module>marshmallow-api</module>
-		<module>marshmallow-loader</module>
 		<module>marshmallow-server</module>
 		<module>marshmallow-runner</module>
-    	<module>marshmallow-client</module>
-    	<module>marshmallow-shared</module>
-    </modules>
+    <module>marshmallow-client</module>
+    <module>marshmallow-shared</module>
+  </modules>
     <build>
     <plugins>
        <plugin>
