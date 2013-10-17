@@ -11,7 +11,7 @@ import com.infinity.marshmallow.communication.MarshmallowCodecFactory;
 import com.infinity.marshmallow.communication.SharedInjectionModule;
 import com.infinity.marshmallow.server.impl.DefaultMarshmallowServer;
 import com.infinity.marshmallow.server.impl.DefaultMessageCodec;
-import com.infinity.marshmallow.sessions.impl.DefaultClientManager;
+import com.infinity.marshmallow.sessions.DefaultClientManager;
 
 public class ServerInjectionModule extends AbstractModule {
 

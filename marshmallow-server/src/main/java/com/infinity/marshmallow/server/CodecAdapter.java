@@ -4,7 +4,9 @@ import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
 import com.infinity.marshmallow.api.server.ClientManager;
+import com.infinity.marshmallow.api.server.ClientSession;
 import com.infinity.marshmallow.api.server.MessageCodec;
+import com.infinity.marshmallow.sessions.IoSessionWrapper;
 
 public class CodecAdapter extends IoHandlerAdapter {
 
@@ -19,12 +21,11 @@ public class CodecAdapter extends IoHandlerAdapter {
 
 	@Override
 	public void messageReceived(IoSession session, Object message) throws Exception {
-		System.out.println("message recieved: " + message);
+		// TODO: make getting the wrapper a pool instead of creating objects each time
+		IoSessionWrapper sessionWrapper = new IoSessionWrapper(session);
+		ClientSession clientSession = clientManager.getSession(sessionWrapper);
 		
-		String m = (String) message;
-		if ("quit".equals(m)) {
-			session.close(false);
-		}
+		codec.processMessage(message, clientSession);
 	}
 	
 }
