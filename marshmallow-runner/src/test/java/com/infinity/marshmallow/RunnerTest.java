@@ -20,11 +20,13 @@ public class RunnerTest {
 
 	private Runner runner;
 	@Mock private Server server;
+	@Mock private MessageCodec codec;
 
 	@Before
 	public void setup() {
 		server = mock(Server.class);
-		runner = new Runner(server);
+		codec = mock(MessageCodec.class);
+		runner = new Runner(server, codec);
 	}
 	
 	@Test

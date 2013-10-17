@@ -19,15 +19,17 @@ public class Runner {
 	private static final Logger logger = LoggerFactory.getLogger(Runner.class);
 
 	private Server server;
+	private MessageCodec codec;
 
 	@Inject
-	public Runner(Server server) {
+	public Runner(Server server, MessageCodec codec) {
 		this.server = server;
+		this.codec = codec;
 	}
 	
 	public void run() {
 		server.configureServer();
-		server.addListener(new MessageCodec(){});
+		server.addListener(codec);
 		server.startServer();
 	}
 	

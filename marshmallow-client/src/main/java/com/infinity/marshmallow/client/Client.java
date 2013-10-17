@@ -34,8 +34,8 @@ public class Client {
 	    connector.setConnectTimeoutMillis(CONNECT_TIMEOUT);
 
 	    if (USE_CUSTOM_CODEC) {
-	    connector.getFilterChain().addLast("codec",
-	        new ProtocolCodecFilter(new MyProtocolCodecFactory()));
+	    	connector.getFilterChain().addLast("codec",
+	    			new ProtocolCodecFilter(new MyProtocolCodecFactory()));
 	    } else {
 //	        connector.getFilterChain().addLast("codec",
 //	            new ProtocolCodecFilter(new ObjectSerializationCodecFactory()));

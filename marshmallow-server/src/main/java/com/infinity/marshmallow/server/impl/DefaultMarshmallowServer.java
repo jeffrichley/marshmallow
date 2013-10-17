@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 import com.infinity.marshmallow.api.exception.MarshmallowNetworkException;
+import com.infinity.marshmallow.api.server.ClientManager;
 import com.infinity.marshmallow.api.server.MessageCodec;
 import com.infinity.marshmallow.api.server.Server;
 import com.infinity.marshmallow.server.CodecAdapter;
@@ -24,11 +25,13 @@ public class DefaultMarshmallowServer implements Server {
 	private static final Logger logger = LoggerFactory.getLogger(DefaultMarshmallowServer.class);
 
 	private IoAcceptor acceptor = null;
-	private ProtocolCodecFactory codecFactory;
+	private final ProtocolCodecFactory codecFactory;
+	private final ClientManager clientManager;
 
 	@Inject
-	public DefaultMarshmallowServer(ProtocolCodecFactory codecFactory) {
+	public DefaultMarshmallowServer(ProtocolCodecFactory codecFactory, ClientManager clientManager) {
 		this.codecFactory = codecFactory;
+		this.clientManager = clientManager;
 	}
 	
 	@Override
@@ -37,8 +40,6 @@ public class DefaultMarshmallowServer implements Server {
 		
 		acceptor = new NioSocketAcceptor();
 		acceptor.getFilterChain().addLast("logger", new LoggingFilter());
-//		acceptor.getFilterChain().addLast("codec",
-//				new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"))));
 		acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(codecFactory));
 		acceptor.getSessionConfig().setReadBufferSize(2048);
 		acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
@@ -48,7 +49,8 @@ public class DefaultMarshmallowServer implements Server {
 
 	@Override
 	public void addListener(MessageCodec codec) {
-		acceptor.setHandler(new CodecAdapter(codec));
+		CodecAdapter codecAdapter = new CodecAdapter(codec, clientManager);
+		acceptor.setHandler(codecAdapter);
 	}
 
 	@Override

@@ -4,10 +4,14 @@ import org.apache.mina.filter.codec.ProtocolCodecFactory;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
+import com.infinity.marshmallow.api.server.ClientManager;
+import com.infinity.marshmallow.api.server.MessageCodec;
 import com.infinity.marshmallow.api.server.Server;
 import com.infinity.marshmallow.communication.MarshmallowCodecFactory;
 import com.infinity.marshmallow.communication.SharedInjectionModule;
 import com.infinity.marshmallow.server.impl.DefaultMarshmallowServer;
+import com.infinity.marshmallow.server.impl.DefaultMessageCodec;
+import com.infinity.marshmallow.sessions.impl.DefaultClientManager;
 
 public class ServerInjectionModule extends AbstractModule {
 
@@ -21,6 +25,9 @@ public class ServerInjectionModule extends AbstractModule {
 		
 		// server configuration
 		bind(ProtocolCodecFactory.class).to(MarshmallowCodecFactory.class);
+		bind(MessageCodec.class).to(DefaultMessageCodec.class);
+		bind(ClientManager.class).to(DefaultClientManager.class);
+		
 	}
 
 }
