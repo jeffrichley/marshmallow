@@ -9,6 +9,7 @@ public class DefaultMessageCodec implements MessageCodec {
 	public void processMessage(Object message, ClientSession session) {
 		// TODO Auto-generated method stub
 		
+		System.out.println(message);
 	}
 
 }

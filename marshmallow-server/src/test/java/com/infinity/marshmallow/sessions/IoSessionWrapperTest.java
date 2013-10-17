@@ -15,7 +15,8 @@ public class IoSessionWrapperTest {
 	@Before
 	public void setUp() throws Exception {
 		session = new DummySession();
-		cut = new IoSessionWrapper(session);
+		cut = new IoSessionWrapper();
+		cut.setSession(session);
 	}
 
 	@Test
@@ -23,6 +24,13 @@ public class IoSessionWrapperTest {
 		cut.setAttribute("test", "woot");
 		String value = cut.getAttribute("test");
 		assertEquals("woot", value);
+	}
+	
+	@Test
+	public void testClear() {
+		assertNotNull(cut.getSession());
+		cut.clear();
+		assertNull(cut.getSession());
 	}
 
 }

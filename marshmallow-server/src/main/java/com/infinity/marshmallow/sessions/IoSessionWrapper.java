@@ -6,9 +6,9 @@ import com.infinity.marshmallow.api.server.ExternalClientWrapper;
 
 public class IoSessionWrapper implements ExternalClientWrapper {
 
-	private final IoSession session;
+	private IoSession session;
 
-	public IoSessionWrapper(IoSession session) {
+	public void setSession(IoSession session) {
 		this.session = session;
 	}
 
@@ -20,6 +20,14 @@ public class IoSessionWrapper implements ExternalClientWrapper {
 	@Override
 	public void setAttribute(String attributeName, String value) {
 		session.setAttribute(attributeName, value);
+	}
+
+	protected IoSession getSession() {
+		return session;
+	}
+	
+	public void clear() {
+		session = null;
 	}
 
 }
