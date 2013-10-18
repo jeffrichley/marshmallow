@@ -67,7 +67,6 @@ public class Client {
 
 	    // wait until the summation is done
 	    for (int i = 1; i <= 10; i++) {
-//	    	session.write("hello " + i);
 	    	MyMessage msg = new MyMessage("hello " + i);
 	    	session.write(msg);
 	    }

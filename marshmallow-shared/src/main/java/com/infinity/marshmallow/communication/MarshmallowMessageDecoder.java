@@ -19,13 +19,9 @@ public class MarshmallowMessageDecoder implements MessageDecoder {
 		
 		while (buff.hasRemaining()) {
 			byte length = buff.get();
-			
 			byte[] dst = new byte[length];
-			
 			buff.get(dst, 0, length);
-			
-			String msg = new String(dst);
-			out.write(msg);
+			out.write(dst);
 		}		
 		
 		return OK;
