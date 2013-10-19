@@ -12,5 +12,11 @@ public interface Message {
 	 * @return The bytes that represent this message
 	 */
 	byte[] getBytes();
+	
+	/**
+	 * Sets up the message object with an array of bytes
+	 * @param bytes The bytes to configure with
+	 */
+	void setBytes(byte[] bytes);
 
 }

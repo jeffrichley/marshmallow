@@ -15,5 +15,6 @@ import com.infinity.marshmallow.communication.Message;
 public @interface NetworkObject {
 	
 	Class<? extends MessageEncoder<? extends Message>> encoder() default DefaultMessageEncoder.class;
+	byte messageId();
 	
 }

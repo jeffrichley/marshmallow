@@ -12,6 +12,7 @@ import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.infinity.marshmallow.communication.ByteMessage;
 import com.infinity.marshmallow.communication.MyMessage;
 
 public class Client {
@@ -67,10 +68,13 @@ public class Client {
 
 	    // wait until the summation is done
 	    for (int i = 1; i <= 10; i++) {
-	    	MyMessage msg = new MyMessage("hello " + i);
+			MyMessage msg = new MyMessage("hello " + i);
 	    	session.write(msg);
 	    }
-	    session.write(new MyMessage("quit"));
+//	    session.write(new MyMessage("quit"));
+	    ByteMessage byteMessage = new ByteMessage();
+	    byteMessage.setBytes("quit".getBytes());
+		session.write(byteMessage);
 	    session.getCloseFuture().awaitUninterruptibly();
 	    connector.dispose();
 	}
