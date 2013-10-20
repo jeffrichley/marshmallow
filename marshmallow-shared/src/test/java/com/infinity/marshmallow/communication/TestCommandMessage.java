@@ -1,4 +1,4 @@
-package com.infinity.marshmallow.server.impl;
+package com.infinity.marshmallow.communication;
 
 import com.infinity.marshmallow.communication.CommandMessage;
 

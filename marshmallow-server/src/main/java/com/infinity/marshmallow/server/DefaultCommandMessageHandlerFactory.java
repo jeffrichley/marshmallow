@@ -54,4 +54,20 @@ public class DefaultCommandMessageHandlerFactory implements CommandMessageHandle
 		return new ArrayList<Class<? extends MessageHandler>>(handlers.values());
 	}
 
+	@Override
+	public MessageHandler getHandler(byte minValue) {
+		Class<? extends MessageHandler> clazz = handlers.get(minValue);
+		MessageHandler newInstance = null;
+		if (clazz != null) {
+			try {
+				newInstance = clazz.newInstance();
+			} catch (InstantiationException e) {
+				throw new MarshmallowException("Unable to create a message handler", e);
+			} catch (IllegalAccessException e) {
+				throw new MarshmallowException("Unable to create a message handler", e);
+			}
+		}
+		return newInstance;
+	}
+
 }
