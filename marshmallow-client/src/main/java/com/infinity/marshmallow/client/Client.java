@@ -12,8 +12,10 @@ import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.infinity.marshmallow.api.exception.MarshmallowException;
 import com.infinity.marshmallow.communication.ByteMessage;
-import com.infinity.marshmallow.communication.MyMessage;
+import com.infinity.marshmallow.communication.CommandMessage;
+import com.infinity.marshmallow.communication.Message;
 
 public class Client {
 
@@ -21,17 +23,38 @@ public class Client {
 	private static final boolean USE_CUSTOM_CODEC = false;
 	private static final String HOSTNAME = "localhost";
 	private static final int PORT = 8000;
-
-	private static final int CLIENTS_TO_SPAWN = 1;
 	
+	private NioSocketConnector connector;
+	private IoSession session;
+
 	public static void main(String[] args) throws InterruptedException {
-		for (int i = 0; i < CLIENTS_TO_SPAWN; i++) {
-			startClient();
-		}
+		Client client = new Client();
+		client.startClient();
+		
+		for (int i = 1; i <= 10; i++) {
+			String msg = "hello " + i;
+			client.write(msg.getBytes());
+	    }
+		
+		CommandMessage msg = new CommandMessage((byte) 1);
+		msg.setBytes("howdy".getBytes());
+		client.write(msg);
+		
+		client.close();
 	}
 
-	private static void startClient() throws InterruptedException {
-		NioSocketConnector connector = new NioSocketConnector();
+	public void write(byte[] bytes) {
+		ByteMessage byteMessage = new ByteMessage();
+	    byteMessage.setBytes(bytes);
+		session.write(byteMessage);
+	}
+	
+	public void write(Message message) {
+		session.write(message);
+	}
+	
+	public void startClient() throws InterruptedException {
+		connector = new NioSocketConnector();
 	    connector.setConnectTimeoutMillis(CONNECT_TIMEOUT);
 
 	    if (USE_CUSTOM_CODEC) {
@@ -45,37 +68,27 @@ public class Client {
 	    	Injector injector = Guice.createInjector(new ClientInjectionModule());
 	    	ProtocolCodecFactory pcf = injector.getInstance(ProtocolCodecFactory.class);
 	    	connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(pcf));
-	    	
-			
 	    }
 
 	    connector.getFilterChain().addLast("logger", new LoggingFilter());
 	    connector.setHandler(new ClientSessionHandler());
-	    IoSession session;
 
-	    for (;;) {
-	        try {
-	            ConnectFuture future = connector.connect(new InetSocketAddress(HOSTNAME, PORT));
-	            future.awaitUninterruptibly();
-	            session = future.getSession();
-	            break;
-	        } catch (RuntimeIoException e) {
-	            System.err.println("Failed to connect.");
-	            e.printStackTrace();
-	            Thread.sleep(5000);
-	        }
-	    }
+        try {
+            ConnectFuture future = connector.connect(new InetSocketAddress(HOSTNAME, PORT));
+            future.awaitUninterruptibly();
+            session = future.getSession();
+        } catch (RuntimeIoException e) {
+            throw new MarshmallowException("Failed to connect to " + HOSTNAME + ":" + PORT, e);
+        }
+	}
 
-	    // wait until the summation is done
-	    for (int i = 1; i <= 10; i++) {
-			MyMessage msg = new MyMessage("hello " + i);
-	    	session.write(msg);
-	    }
-//	    session.write(new MyMessage("quit"));
-	    ByteMessage byteMessage = new ByteMessage();
+	public void close() {
+		ByteMessage byteMessage = new ByteMessage();
 	    byteMessage.setBytes("quit".getBytes());
-		session.write(byteMessage);
-	    session.getCloseFuture().awaitUninterruptibly();
+		
+	    write(byteMessage);
+		
+		session.getCloseFuture().awaitUninterruptibly();
 	    connector.dispose();
 	}
 	
